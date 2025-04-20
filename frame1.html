@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Load HTML in Frame</title>
+    <style>
+        iframe {
+            width: 100%;
+            height: 400px; /* Adjust as per your need */
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 10px;
+            margin: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <button onclick="loadPage()">Load HTML in Frame</button>
+
+    <!-- Create the iframe where the HTML file will be loaded -->
+    <iframe id="contentFrame" src="" style="display:none;"></iframe>
+
+    <script>
+        function loadPage() {
+            // Set the iframe's source to the path of the HTML file you want to load
+            var iframe = document.getElementById('contentFrame');
+            iframe.src = "page-to-load.html";  // Change this to the path of the HTML file
+            iframe.style.display = "block";  // Show the iframe once content is loaded
+        }
+    </script>
+
+</body>
+</html>

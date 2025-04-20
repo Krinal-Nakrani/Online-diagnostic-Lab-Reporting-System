@@ -1,0 +1,75 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.feedback-container {
+    width: 50%;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/*.star-rating {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin: 10px 0;
+}
+
+.star-rating input {
+    display: none;
+}*/
+
+.rating {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.star {
+    font-size: 30px;
+    color: gray; /* Default color is gray */
+    cursor: pointer;
+    transition: color 0.3s ease;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+/* When a radio button is checked, change the color of all previous stars */
+.rating input {
+    display: none;
+}
+
+.rating input:checked ~ label {
+    color: gold;
+}
+
+.star-rating label {
+    font-size: 25px;
+    cursor: pointer;
+}
+
+textarea, input, button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}

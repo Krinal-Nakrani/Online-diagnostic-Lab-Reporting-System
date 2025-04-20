@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Tracking</title>
+  <style>
+    /* Basic Styling */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      height: 100vh;
+    }
+
+    .tracking-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 50px auto;
+      width: 80%;
+      position: relative;
+
+    }
+
+    .step {
+      text-align: center;
+      flex: 1;
+    }
+
+    .step .circle {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #ddd;
+      line-height: 50px;
+      font-size: 18px;
+      color: #555;
+      margin: 0 auto 10px;
+      display: inline-block;
+    }
+
+    .step.active .circle {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    .step .label {
+      font-size: 14px;
+      color: #555;
+    }
+
+    .line {
+      position: absolute;
+      top: 25px;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background-color: #ddd;
+      z-index: -1;
+      flex-direction: column;
+    }
+
+    .line.active {
+      background-color: #4CAF50;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="tracking-container">
+    <div class="line"></div>
+
+    <div class="step active">
+      <div class="circle">1</div>
+      <div class="label">Sample Collected</div>
+    </div>
+
+    <div class="step">
+      <div class="circle">2</div>
+      <div class="label">Sample Processing</div>
+    </div>
+
+    <div class="step">
+      <div class="circle">3</div>
+      <div class="label">Process completed</div>
+    </div>
+
+    <div class="step">
+      <div class="circle">4</div>
+      <div class="label">Generating reports</div>
+    </div>
+    <div class="step">
+      <div class="circle">5</div>
+      <div class="label">Reports delievered</div>
+    </div>
+  </div>
+
+</body>
+
+</html>
