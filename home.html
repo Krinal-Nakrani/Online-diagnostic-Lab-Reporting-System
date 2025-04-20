@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medical Services</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: white;
+      font-family: sans-serif;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      height: 250vh;
+      width: 1499px;
+
+    }
+
+    /* Main container holding left and right sections */
+    .main-container {
+      display: flex;
+      flex: 1;
+      height: 100%;
+
+    }
+
+    /* Left and right sections */
+    .left-section {
+      flex: 1;
+      background-color: #076b61;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .right-section {
+      flex: 3;
+      background-image: url('img2.jpg');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    /* Transparent overlay for right section */
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin-left: 00px;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.525);
+      z-index: 1;
+    }
+
+    /* Content container */
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      text-align: left;
+      color: white;
+      width: 100%;
+      padding: 20px;
+    }
+
+    /* Text content */
+    .content {
+      text-align: left;
+      width: 60%;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 4em;
+      margin-bottom: 10px;
+      padding-right: 20px;
+      margin-left: -400px;
+    }
+
+    p {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+      margin-left: -400px;
+
+    }
+
+    .button {
+      display: inline-block;
+      padding: 15px 30px;
+      background-color: #4DB6AC;
+
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+      margin-right: 20px;
+      /* Add margin to create spacing between buttons */
+    }
+
+    .button:last-child {
+      margin-right: 0;
+      /* Remove margin from the last button */
+    }
+
+    .button:hover {
+      background-color: #009677;
+    }
+
+    .logo {
+      position: absolute;
+      top: -150px;
+      left: 950px;
+      width: 150px;
+      height: auto;
+      
+    }
+
+    .card-container {
+      display: flex;
+      gap: 20px;
+      padding: 50px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 400px;
+      height: 300px;
+      overflow: hidden;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-image {
+      width: 100%;
+      height: auto;
+    }
+
+    .card-content {
+      padding: 15px;
+    }
+
+    .card-title {
+      font-size: 1.5rem;
+      margin: 10px 0;
+      color: #333;
+    }
+
+    .card-description {
+      font-size: 1rem;
+      color: #666;
+      margin: 10px 0;
+    }
+
+    .card-button {
+      background-color: #4DB6AC;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .card-button:hover {
+      background-color: #4DB6AC;
+    }
+
+    .dialog-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .dialog-box {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .dialog-box h2 {
+      margin: 0 0 10px;
+      font-size: 1.5rem;
+      color: #333;
+    }
+
+    .dialog-box p {
+      margin: 0 0 20px;
+      font-size: 1rem;
+      color: #555;
+    }
+
+    .close-button {
+      background-color: #ff5252;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .close-button:hover {
+      background-color: #ff0000;
+    }
+
+    .features {
+      background: url(bg\ image.jpg);
+      color: rgb(255, 255, 255);
+      font-size: 17px;
+      font-weight: underline;
+      padding: 10px;
+      text-align: center;
+      margin-top: 4px;
+    }
+
+    .features ul {
+      list-style-type: none;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .features ul li {
+      margin: 5px 10px;
+      padding: 40px;
+      font-weight: bold;
+      text-align: center;
+      border-radius: 5px;
+      max-width: 250px;
+    }
+
+    footer {
+      background-color: #80CBC4;
+      color: #000000;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .footer-content p {
+      margin: 10px 0;
+    }
+
+    .location-options {
+      margin-top: 10px;
+    }
+
+    .location-options a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    .location-options a:hover {
+      text-decoration: underline;
+    }
+
+    .address-container {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 5px 20px;
+      border-radius: 10px;
+      font-size: 1em;
+      color: white;
+    }
+
+    .address-container p {
+      margin: 5px 0;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Main Container -->
+  <div class="main-container">
+    <!-- Left Section -->
+    <div class="left-section">
+      <!--<img src="logo.png" alt="Logo" class="logo">  Add your logo image file here -->
+    </div>
+
+    <!-- Right Section -->
+    <div class="right-section">
+      <div class="overlay"></div>
+
+      <!-- Content inside the right section -->
+      <div class="container">
+        <div class="content">
+          <h1>AARUSH CLINICAL <br>LABORATORY</h1>
+          <p>Keep your health at lab check. Whether you're managing a chronic condition or seeking preventive care, <br>We are
+            here to support your health journey with precision diagnostic.</p>
+        <div><img src="logo1.png" alt="Logo" class="logo"> <!-- Add your logo image file here --></div>
+          <a href="../user_login.php" class="button" style=" margin-left: -100px;">USER LOGIN</a>
+          <a href="../admin.html" class="button">ADMIN LOGIN</a>
+        </div>
+
+      </div>
+      <!-- Address Container -->
+      <div class="address-container">
+
+        <p>Working Hours: Mon-Fri, 8 AM - 10 PM</p>
+        <p>Contact us: +91-7304268670 / +91-9321366744</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <div class="card-container">
+    <div class="card">
+      <!--<img src="https://via.placeholder.com/300" alt="Card Image" class="card-image">-->
+      <div class="card-content">
+        <h2 class="card-title">CBC Test</h2>
+        <p class="card-description">
+          A Complete Blood Count (CBC) test is a common blood test that evaluates overall<br>
+          health and detects a wide range of conditions,<br> including infections, anemia, and immune system
+          disorders.
+        </p>
+        <button class="card-button" onclick="openDialog('CBC: No special preparation needed. Stay hydrated.')">Learn
+          More</button>
+      </div>
+    </div>
+    <div class="card">
+      <!--<img src="https://via.placeholder.com/300" alt="Card Image" class="card-image">-->
+      <div class="card-content">
+        <h2 class="card-title">Thyroid Function<br> Tests (TFTs)</h2>
+        <p class="card-description">
+
+
+          TFTs assess thyroid health by measuring TSH, T3, and T4 levels.<br> These tests help diagnose thyroid
+          disorders like hypothyroidism and hyperthyroidism. <br>Visit our lab for accurate thyroid testing.
+        </p>
+        <button class="card-button"
+          onclick="openDialog('TFTs: Avoid biotin supplements for at least 48 hours before testing.')">Learn
+          More</button>
+      </div>
+    </div>
+    <div class="card">
+      <!-- <img src="https://via.placeholder.com/300" alt="Card Image" class="card-image">-->
+      <div class="card-content">
+        <h2 class="card-title">Blood Glucose Test</h2>
+        <p class="card-description">
+
+
+          A Blood Glucose Test measures sugar levels in the blood to diagnose and monitor diabetes and
+          prediabetes.<br>It helps assess how well the body processes glucose. Visit our lab for reliable blood sugar
+          testing.
+        </p>
+        <button class="card-button"
+          onclick="openDialog( 'Blood Glucose Test: Fast for 8-12 hours (for fasting glucose test).')">Learn
+          More</button>
+
+
+
+
+      </div>
+    </div>
+    <div class="card">
+      <!--<img src="https://via.placeholder.com/300" alt="Card Image" class="card-image">-->
+      <div class="card-content">
+        <h2 class="card-title">Urinalysis</h2>
+        <p class="card-description">
+          A Urinalysis is a routine test that examines urine to detect infections, kidney disease, diabetes, and other
+          health conditions. It checks for abnormalities in color, clarity, and composition. Visit our lab for accurate
+          urine testing.
+        </p>
+        <button class="card-button"
+          onclick="openDialog('Urinalysis: Collect a midstream urine sample for best results.')">Learn More</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dialog Box -->
+  <div class="dialog-overlay" id="dialogOverlay">
+    <div class="dialog-box">
+      <h2 id="dialogTitle">Dialog Title</h2>
+      <p id="dialogDescription">Dialog Description</p>
+      <button class="close-button" onclick="closeDialog()">Close</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <div class="section features" id="features">
+    <h2>Why Choose Us ?</h2>
+    <ul>
+      <li><img src="collection.png" width="220px" height="270px" </img></li>
+      <li><img src="appointment booking.png" width="220px" height="270px" </img></li>
+      <li><img src="reports online1.png" width="220px" height="270px" </img></li>
+      <li><img src="quality check1.png" width="220px" height="270px" </img></li>
+    </ul>
+  </div>
+  <footer>
+    <div class="footer-content">
+      <p><strong>Contact Us: </strong>+91-7304268670 / +91-9321366744</p>
+      <p><strong>Email us: </strong>aarushclinicallabrotory@gmail.com</p>
+      <p><strong>Address: </strong>A-003,New Sai Angaan Building,opp.Akash Nidhi,Ramdev Park Road,Mira Road
+        (E),Thane-401107</p>
+
+    </div>
+  </footer>
+
+
+
+</body>
+
+</html>

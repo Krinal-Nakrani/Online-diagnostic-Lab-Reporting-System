@@ -107,6 +107,10 @@ button {
   font-weight: bold;
   padding: 12px 45px;
   margin-top: 30px;
+  /*padding-top: 50x;
+  padding-bottom: 30x;
+  padding-left: 50x;
+  padding-right: 80x;*/
   letter-spacing: 1px;
   transition: 0.8s ease-in;
 }
