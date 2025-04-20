@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f7f8;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background: white;
+            /* padding: 10px; */
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th {
+            background: linear-gradient(to right, #007bff, #0056b3);
+            color: white;
+            padding: 12px;
+        }
+
+        td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        /* Alternating row colors */
+        tbody tr:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #eaeaea;
+        }
+
+        /* Hover effect */
+        tbody tr:hover {
+            background-color: #d0e2ff;
+            transition: 0.3s;
+        }
+
+        /* Styling for the prescription link */
+        a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 style="text-align: center; color: #0056b3;">Appointment List</h2>
+        <table id="appointment-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Contact</th>
+                    <th>Email</th>
+                    <th>Test</th>
+                    <th>Appointment Date</th>
+                    <th>Appointment Time</th>
+                    <th>Prescription</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data will be populated dynamically -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("fetch_appointments.php")
+                .then((response) => response.json())
+                .then((data) => {
+                    const tableBody = document.querySelector("#appointment-table tbody");
+                    tableBody.innerHTML = ""; // Clear existing rows
+
+                    data.forEach((appointment, index) => {
+                        const row = document.createElement("tr");
+                        row.innerHTML = `
+                            <td>${index + 1}</td>
+                            <td>${appointment.name}</td>
+                            <td>${appointment.age}</td>
+                            <td>${appointment.gender}</td>
+                            <td>${appointment.contact}</td>
+                            <td>${appointment.email}</td>
+                            <td>${appointment.test}</td>
+                            <td>${appointment.appointment_date}</td>
+                            <td>${appointment.appointment_time}</td>
+                            <td>
+                                ${
+                                    appointment.prescription
+                                        ? `<a href="../user dashboard/${appointment.prescription}" target="_blank">View</a>`
+                                        : "N/A"
+                                }
+                            </td>
+                        `;
+                        tableBody.appendChild(row);
+                    });
+                })
+                .catch((error) => {
+                    console.error("Error fetching appointments:", error);
+                });
+        });
+    </script>
+</body>
+</html>

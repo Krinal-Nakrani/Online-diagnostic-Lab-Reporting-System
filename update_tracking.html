@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Update Tracking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eef5ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 350px;
+        }
+
+        h2 {
+            color: #0056b3;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        td {
+            padding: 10px;
+        }
+
+        label {
+            display: inline-block;
+            background-color: #007BFF;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        select,
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 25px;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Update Tracking Information</h2>
+        <form action="update_tracking.php" method="post">
+            <table>
+                <tr>
+                    <td><label for="username">Username:</label></td>
+                    <td><input type="text" id="username" name="username" required></td>
+                </tr>
+                <tr>
+                    <td><label for="test">Select Test:</label></td>
+                    <td>
+                        <select id="test" name="test" required>
+                            <option value="">-- Select a Test --</option>
+                            <option value="lipid">Lipid Profile</option>
+                            <option value="dengue">Dengue IGG</option>
+                            <option value="IGM">Chikungunya-IGM</option>
+                            <option value="D3">Vitamin-D3 </option>
+                            <option value="B12">Vitamin-B12 </option>
+                            <option value="CBC">CBC</option>
+                            <option value="allergy">Allergy Profile </option>
+                            <option value="hiv">HIV-1 </option>
+                            <option value="fasting">Insulin-Fasting</option>
+                            <option value="postlunch">Insulin-Postlunch</option>
+                            <option value="stool">Stool/R</option>
+                            <option value="Urine">Urine/R</option>
+                            <option value="Pregnancy">Pregnancy Test</option>
+                            <option value="basic">Health watch Basic</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="update_status">Update Status:</label></td>
+                    <td><input type="number" id="update_status" name="update_status" min="1" max="5" required></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><button type="submit">Submit</button></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+
+</html>
